@@ -1,0 +1,34 @@
+sample_restaurants
+
+1. Filter rows that has borough=Brooklyn value
+{borough: "Brooklyn"}
+
+2. {borough: "Brooklyn", cuisine: "American"}
+
+3. Or
+{$or: [{borough: "Queens"}, {cuisine: "Delicatessen"}]}
+
+4. AND
+{$and: [{borough: "Queens"}, {cuisine: "Delicatessen"}]}
+
+sample_supplies
+5. NOT -> find stores that does not start with S
+{storeLocation: {$not: /^S.*/ }}
+
+6. NOR -> if any rec contains one of the conditions do not return it
+{$nor: [{storeLocation: "Denver"}, {purchaseMethod: "Phone"}]}
+
+7. Not equal $ne
+{ borough: { $ne: "Brooklyn" } }
+
+8. equal $eq
+{ borough: { $eq: "Brooklyn" } }
+
+sample_airbnb.listingsAndReviews
+9. Greater than and less than, $gt, $lt
+{ beds: { $gt: 5 } }
+{ $and: [{ beds: { $gt: 6 } }, { beds: { $lt: 9 } }] }
+
+10. in and not in $in $nin  
+{ property_type: { $in: ["Apartment", "Condominium"] } }
+{ property_type: { $nin: ["Apartment", "Condominium"] } }
